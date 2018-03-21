@@ -2,9 +2,7 @@ package sample.viewmodel;
 
 import javafx.beans.property.*;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class TaskViewModel {
 
@@ -12,7 +10,7 @@ public class TaskViewModel {
     private final StringProperty description;
     private final BooleanProperty isDone;
     private final ObjectProperty<LocalDateTime> taskTime;
-    private final long timeStamp;
+    private final ObjectProperty<LocalDateTime> timeStamp;
 
 
     public TaskViewModel() {
@@ -23,10 +21,9 @@ public class TaskViewModel {
     public TaskViewModel(String name, String description) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-
         this.isDone = new SimpleBooleanProperty(false);
         this.taskTime = new SimpleObjectProperty<>(LocalDateTime.now());
-        this.timeStamp = new Date().getTime();
+        this.timeStamp = new SimpleObjectProperty<>(LocalDateTime.now());
     }
 
     public String getName() {
@@ -77,7 +74,15 @@ public class TaskViewModel {
         this.taskTime.set(taskTime);
     }
 
-    public long getTimeStamp() {
+    public LocalDateTime getTimeStamp() {
+        return timeStamp.get();
+    }
+
+    public ObjectProperty<LocalDateTime> timeStampProperty() {
         return timeStamp;
+    }
+
+    public void setTimeStamp(LocalDateTime timeStamp) {
+        this.timeStamp.set(timeStamp);
     }
 }

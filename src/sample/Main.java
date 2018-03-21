@@ -1,18 +1,37 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import sample.view.TaskOverviewController;
+import sample.viewmodel.TaskViewModel;
 
 import java.io.IOException;
 
 public class Main extends Application {
 
+    private ObservableList<TaskViewModel> taskData= FXCollections.observableArrayList();
+
     private Stage primaryStage;
     private BorderPane rootLayout;
+
+
+    public Main() {
+
+        taskData.add(new TaskViewModel("Learn English","Lingualeo,Youtube"));
+        taskData.add(new TaskViewModel("Learn Java","Youtube"));
+        taskData.add(new TaskViewModel("Learn Android","Udacity's cources"));
+        taskData.add(new TaskViewModel("Learn Git","Youtube"));
+    }
+
+    public ObservableList<TaskViewModel> getTaskData() {
+        return taskData;
+    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -55,6 +74,10 @@ public class Main extends Application {
 
             // Set person overview into the center of root layout.
             rootLayout.setCenter(personOverview);
+
+            TaskOverviewController taskOverviewController=loader.getController();
+            taskOverviewController.setMain(this);
+
         } catch (IOException e) {
             e.printStackTrace();
         }

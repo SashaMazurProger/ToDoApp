@@ -10,18 +10,20 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-        <!--fx:controller="sample.view.TaskOverview"-->
-<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" >
+
+<!--fx:controller="sample.view.TaskOverview"-->
+
+<AnchorPane prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.view.TaskOverviewController">
     <children>
         <SplitPane dividerPositions="0.29797979797979796" prefHeight="300.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <items>
 
                 <AnchorPane maxWidth="420.0" minHeight="0.0" minWidth="0.0" prefHeight="298.0" prefWidth="349.0">
                     <children>
-                        <TableView layoutX="-105.0" layoutY="-99.0" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <TableView fx:id="taskTable" layoutX="-105.0" layoutY="-99.0" prefHeight="298.0" prefWidth="175.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <columns>
-                                <TableColumn prefWidth="89.0" text="Name" />
-                                <TableColumn prefWidth="85.0" text="Time" />
+                                <TableColumn fx:id="nameColumn" prefWidth="89.0" text="Name" />
+                                <TableColumn fx:id="timeColumn" prefWidth="85.0" text="Time" />
                             </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -48,6 +50,10 @@
                         <Label text="Time" GridPane.rowIndex="1" />
                         <Label text="Description" GridPane.rowIndex="2" />
                         <Label text="Create date" GridPane.rowIndex="3" />
+                        <Label fx:id="nameLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="timeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="descriptionLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="timeCreateLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                      </children>
                   </GridPane>
                   <ButtonBar layoutX="183.0" layoutY="234.0" prefHeight="23.0" prefWidth="250.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
