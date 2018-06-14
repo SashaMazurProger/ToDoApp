@@ -1,31 +1,26 @@
 package sample.model;
 
+import java.io.Serializable;
 import java.lang.annotation.Annotation;
 
-public class Task {
-
-
-    enum TaskStatuses {
-        Vykonano, NeVykonano, Vidmineno;
-
-    }
+public class Task implements Serializable{
 
 
     private String name;
     private long time;
     private String description;
-    private TaskStatuses status;
+    private boolean isDone;
     private long createTimeStamp;
 
     public Task() {
 
     }
 
-    public Task(String name, long time, String description, TaskStatuses status, long createTimeStamp) {
+    public Task(String name, long time, String description, boolean isDone, long createTimeStamp) {
         this.name = name;
         this.time = time;
         this.description = description;
-        this.status = status;
+        this.isDone = isDone;
         this.createTimeStamp = createTimeStamp;
     }
 
@@ -49,10 +44,6 @@ public class Task {
         this.createTimeStamp = createTimeStamp;
     }
 
-    public TaskStatuses getStatus() {
-        return status;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -65,8 +56,12 @@ public class Task {
         this.description = description;
     }
 
-    public void setStatus(TaskStatuses status) {
-        this.status = status;
+    public boolean isDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 
     @Override
@@ -75,7 +70,7 @@ public class Task {
                 "name='" + name + '\'' +
                 ", time=" + time +
                 ", description='" + description + '\'' +
-                ", status=" + status +
+                ", isDone=" + isDone +
                 '}';
     }
 }

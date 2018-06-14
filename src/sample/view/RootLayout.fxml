@@ -5,13 +5,20 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
 
-        <!--fx:controller="sample.view.RootLayout"-->
-<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" >
+<!--fx:controller="sample.view.RootLayout"-->
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.152" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.view.Main">
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <Menu mnemonicParsing="false" text="Save ">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#handleSaveAsObjects" text="As Objects..." />
+                      <MenuItem mnemonicParsing="false" onAction="#handleSaveToTxtFile" text="To txt file..." />
+                    </items>
+                  </Menu>
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>

@@ -21,7 +21,7 @@ public class TaskViewModel {
     public TaskViewModel(String name, String description) {
         this.name = new SimpleStringProperty(name);
         this.description = new SimpleStringProperty(description);
-        this.isDone = new SimpleBooleanProperty(false);
+        this.isDone = new SimpleBooleanProperty(true);
         this.taskTime = new SimpleObjectProperty<>(LocalDateTime.now());
         this.timeStamp = new SimpleObjectProperty<>(LocalDateTime.now());
     }
@@ -50,7 +50,7 @@ public class TaskViewModel {
         this.description.set(description);
     }
 
-    public boolean isIsDone() {
+    public boolean isDone() {
         return isDone.get();
     }
 
@@ -84,5 +84,16 @@ public class TaskViewModel {
 
     public void setTimeStamp(LocalDateTime timeStamp) {
         this.timeStamp.set(timeStamp);
+    }
+
+    @Override
+    public String toString() {
+        return "TaskViewModel{" +
+                "name=" + name +
+                ", description=" + description +
+                ", isDone=" + isDone +
+                ", taskTime=" + taskTime +
+                ", timeStamp=" + timeStamp +
+                '}';
     }
 }
