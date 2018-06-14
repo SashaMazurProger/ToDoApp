@@ -15,11 +15,10 @@
             <items>
                   <Menu mnemonicParsing="false" text="Save ">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#handleSaveAsObjects" text="As Objects..." />
                       <MenuItem mnemonicParsing="false" onAction="#handleSaveToTxtFile" text="To txt file..." />
                     </items>
                   </Menu>
-              <MenuItem mnemonicParsing="false" text="Close" />
+              <MenuItem mnemonicParsing="false" text="Close" onAction="#handleCloseApp" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">

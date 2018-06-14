@@ -49,8 +49,6 @@ public class TaskOverviewController {
             }
         });
 
-        showTaskDetails(null);
-
         taskTable.getSelectionModel()
                 .selectedItemProperty()
                 .addListener(((observable, oldValue, newValue) -> showTaskDetails(newValue)));
@@ -79,7 +77,18 @@ public class TaskOverviewController {
 
     public void setMain(Main main) {
         this.main = main;
+
+        loadTaskModelsAndSetDefault();
+    }
+
+    private void loadTaskModelsAndSetDefault() {
         taskTable.setItems(main.getTaskData());
+
+        if (main.getTaskData().size() > 0) {
+            taskTable.getSelectionModel().select(0);
+        } else {
+            showTaskDetails(null);
+        }
     }
 
     @FXML
@@ -110,8 +119,8 @@ public class TaskOverviewController {
     @FXML
     private void handleCreateTask(ActionEvent actionEvent) {
         TaskViewModel newTaskViewModel = new TaskViewModel();
-        boolean okClicked=main.showTaskEditDialog(newTaskViewModel);
-        if(okClicked){
+        boolean okClicked = main.showTaskEditDialog(newTaskViewModel);
+        if (okClicked) {
             main.addNewTaskViewModel(newTaskViewModel);
         }
     }
